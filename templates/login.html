@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Admin login</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static "assets/img/favicon.png" %}" rel="icon">
+  <link href="{% static "assets/img/apple-touch-icon.png" %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static "assets/vendor/animate.css/animate.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/aos/aos.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/bootstrap/css/bootstrap.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/bootstrap-icons/bootstrap-icons.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/boxicons/css/boxicons.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/glightbox/css/glightbox.min.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/remixicon/remixicon.css"%}" rel="stylesheet">
+  <link href="{% static "assets/vendor/swiper/swiper-bundle.min.css"%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static "assets/css/style.css"%}" rel="stylesheet">
+
+  
+</head>
+
+<body>
+
+  
+  {% comment %} this is the header included from header.html {% endcomment %}
+   {% include "header.html" %}
+
+  
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Admin Login</h2>
+        </div>
+
+        {% comment %} <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+
+          <div class="col-lg-5">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@example.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+1 5589 55488 55s</p>
+              </div>
+
+            </div> {% endcomment %}
+
+          </div>
+
+          <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+            <center>
+              {% for x in messages %}
+              <h5> 
+                  
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                 <strong style="color:green;">{{x}}</strong>
+                 <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+                </div>
+                                  
+              </h5>
+                {% comment %} Print x {% endcomment %}
+              {% endfor %}
+            </center>
+            <form action="{% url "login" %}" method="POST" name="contactus_form">
+                <!-- In front of action="this name should be path name of contactus() function which we write in urls.py file as views.contactus" -->
+    
+                {% csrf_token %}
+        <!-- Cross-Site Request Forgery (CSRF) is an attack that forces authenticated users to submit a request to a Web application against which they are currently authenticated.
+        CSRF Token used to prevent unathorized person could not submit form from your website-->
+                <div class="form-group">
+                 <input type="text" class="form-control" placeholder="Your Name" name="Username" required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" placeholder="Enter password" name="password" required>
+                </div>
+                {% comment %} <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Contact No." name="phone" required>
+                </div>
+                <div class="form-group">
+                  <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Submit" class="btn btn-primary py-3 px-5" name="submit">
+                </div> {% endcomment %}
+              </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+ {% comment %} this is the footer included from footer.html {% endcomment %}
+  {% include "footer.html" %} 
+
+  
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
